@@ -9,6 +9,8 @@ import Module from './pages/module.jsx';
 import logo from './assets/logo.png';
 import Home from './pages/home.jsx';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import API_BASE_URL from './apiConfig'; // Import API base URL
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,7 +19,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch('/api/user', {
+        const response = await fetch(`${API_BASE_URL}/api/user`, { // Use API_BASE_URL
           method: 'GET',
           credentials: 'include',
         });
