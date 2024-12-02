@@ -2,21 +2,19 @@ body, html {
   margin: 0;
   padding: 0;
   background: linear-gradient(177.9deg, rgb(58, 62, 88) 3.6%, rgb(119, 127, 148) 105.8%);
-  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   color: rgb(0, 0, 0);
 
-  /* Combine animated grid background and gradient */
   background-image: 
     url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC"), 
     linear-gradient(177.9deg, rgb(58, 62, 88) 3.6%, rgb(119, 127, 148) 105.8%);
   background-size: 50px 50px, cover;
   background-blend-mode: overlay;
 
-  /* Add scrolling animation */
   animation: bg-scrolling-reverse 1s linear infinite;
 }
 
@@ -29,16 +27,15 @@ body, html {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: transparent; /* Keep the main gradient in the body background */
+  background: transparent;
 }
 
 .App-header {
   background-color: #1c1c1c; 
   padding: 10px 20px;
-  width: 100vw; 
-  max-width: 100%; 
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto; 
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -51,21 +48,18 @@ body, html {
 }
 
 .HeaderButton, .nav-link {
-  background-color: rgb(0, 0, 36); /* Blue color for buttons */
+  background-color: rgb(0, 0, 36);
   border: none;
-  padding: 10px 15px;
+  padding: 0.6rem 1rem;
   color: white;
   cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  margin-left: 15px;
+  font-size: 1rem;
+  border-radius: 0.5rem;
   text-decoration: none;
-  text-align: center;
-  line-height: 1.5;
 }
 
 .HeaderButton:hover, .nav-link:hover {
-  background-color: #000435; /* Darker blue for hover effect */
+  background-color: #000435;
 }
 
 h1 {
@@ -73,45 +67,53 @@ h1 {
 }
 
 .logo {
-  width: 150px; /* Adjust size to fit your layout */
+  width: 150px;
   height: auto;
 }
 
 @media (max-width: 1024px) {
   .grid {
-    grid-template-columns: 1fr; /* Switch to single column */
-    height: 100vh; /* Full height */
+    grid-template-columns: 1fr;
+    height: 100vh;
+    overflow: hidden;
   }
 
   .bg-gray-900 {
-    padding: 2rem; /* Adjust padding for smaller screens */
-    max-width: 100%; /* Prevent horizontal overflow */
+    padding: 2rem;
+    max-width: 100%;
   }
 
   .course-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    height: 100%; /* Full height */
+    padding: 1rem;
+    text-align: center;
   }
-}
 
-/* Other styles above */
-
-@media (max-width: 1024px) {
   h2 {
-    font-size: 1.25rem; /* Reduce font size for titles */
-  }
-
-  .course-content {
-    font-size: 0.875rem; /* Smaller font for course text */
-    padding: 1rem; /* Adjust padding */
+    font-size: 1.25rem;
   }
 
   .course-buttons button {
-    padding: 0.5rem 1rem; /* Smaller buttons */
+    padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
 }
 
+@media (max-width: 768px) {
+  .App-header {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .grid {
+    gap: 1rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .course-buttons button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}
