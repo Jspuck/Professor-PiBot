@@ -5,6 +5,7 @@ import Course from '../components/Course';
 import Chat from '../components/Chat';
 import axios from 'axios';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import API_BASE_URL from '../apiConfig'; // Import the API_BASE_URL
 
 function Learn() {
   const location = useLocation();
@@ -26,7 +27,7 @@ function Learn() {
 
     const fetchUser = async () => {
       try {
-        const res = await axios.get('http://127.0.0.1:5000/api/user');
+        const res = await axios.get(`${API_BASE_URL}/api/user`);
         if (res.status === 200) {
           setUserId(res.data.user_id);
         } else {
