@@ -70,6 +70,7 @@ h1 {
   width: 150px;
   height: auto;
 }
+<<<<<<< HEAD
 
 @media (max-width: 1024px) {
   .grid {
@@ -117,3 +118,5 @@ h1 {
     font-size: 0.75rem;
   }
 }
+=======
+>>>>>>> parent of 4aa1d667 (Update App.css)
