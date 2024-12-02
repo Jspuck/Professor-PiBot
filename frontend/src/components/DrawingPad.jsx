@@ -1,5 +1,3 @@
-drawingpad.jsx
-
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import { MathJax } from 'better-react-mathjax';
