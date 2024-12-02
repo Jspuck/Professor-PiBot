@@ -1,5 +1,6 @@
 // EditInfoForm.jsx
 import React, { useState } from 'react';
+import API_BASE_URL from '../apiConfig'; // Import API base URL
 
 const EditInfoForm = ({ user, onUpdate }) => {
   const [username, setUsername] = useState(user.username);
@@ -11,7 +12,7 @@ const EditInfoForm = ({ user, onUpdate }) => {
 
     // Make API call to update user information
     try {
-      const response = await fetch('/api/update_user_info', {
+      const response = await fetch(`${API_BASE_URL}/api/update_user_info`, { // Updated URL
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
