@@ -70,6 +70,10 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
                 onMouseMove={draw}
                 onMouseUp={stopDrawing}
                 onMouseOut={stopDrawing}
+                touchstart={startDrawing}
+                touchmove={draw}
+                touchend={stopDrawing}
+                touchcancel={stopDrawing}
             />
             <div className="flex items-center gap-4">
                 <button
