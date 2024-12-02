@@ -77,26 +77,22 @@ h1 {
   height: auto;
 }
 
-@media (max-width: 768px) {
-  .App-header {
-    flex-direction: column; /* Stack items vertically */
-    height: auto; /* Adjust height */
-    padding: 20px; /* Add more padding for spacing */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr; /* Switch to single column */
+    height: 100vh; /* Full height */
   }
 
-  .nav {
-    flex-wrap: wrap; /* Allow wrapping of nav buttons */
-    justify-content: center; /* Center align navigation */
-    gap: 10px; /* Reduce spacing between items */
+  .bg-gray-900 {
+    padding: 2rem; /* Adjust padding for smaller screens */
+    max-width: 100%; /* Prevent horizontal overflow */
   }
 
-  .HeaderButton {
-    font-size: 14px; /* Reduce button font size */
-    padding: 8px 10px; /* Adjust padding */
-    width: auto; /* Prevent buttons from being too wide */
-  }
-
-  .logo {
-    width: 120px; /* Reduce logo size */
+  .course-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100%; /* Full height */
   }
 }
