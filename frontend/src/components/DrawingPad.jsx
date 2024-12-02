@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
+import API_BASE_URL from '../apiConfig'; // Import API base URL
 
 const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
     const canvasRef = useRef(null);
@@ -40,7 +41,7 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
     const previewDrawing = async () => {
         const image = canvasRef.current.toDataURL('image/png');
         try {
-            const response = await axios.post('http://127.0.0.1:5000/api/process-drawing', {
+            const response = await axios.post(`${API_BASE_URL}/api/process-drawing`, { // Updated URL
                 src: image,
                 formats: ['latex_styled'],
                 data_options: { include_asciimath: true }
