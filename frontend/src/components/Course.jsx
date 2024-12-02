@@ -93,7 +93,11 @@ const Course = ({ module, userId, sendToChatTutor}) => {
     
         if (submissionType === 'photo' && image) {
             try {
+<<<<<<< HEAD
                 const photoResponse = await axios.post(${API_BASE_URL}/api/process-drawing, {
+=======
+                const photoResponse = await axios.post('http://127.0.0.1:5000/api/process-drawing', {
+>>>>>>> parent of f67c9e7d (Update Course.jsx)
                     src: image,
                     formats: ['latex'],
                     data_options: {}
@@ -107,7 +111,11 @@ const Course = ({ module, userId, sendToChatTutor}) => {
         }
     
         try {
+<<<<<<< HEAD
             const response = await axios.post(${API_BASE_URL}/api/process, {
+=======
+            const response = await axios.post('http://127.0.0.1:5000/api/process', {
+>>>>>>> parent of f67c9e7d (Update Course.jsx)
                 input: processedInput,
                 correctAnswer: currentQuestion.answer,
                 submissionType: 'validation',
