@@ -70,6 +70,22 @@ button:focus-visible {
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.4em; /* Scale down header size */
+  }
+
+  button {
+    padding: 0.5em 1em; /* Adjust button padding */
+    font-size: 0.9em; /* Scale down font size */
+  }
+
+  body {
+    flex-direction: column; /* Stack content vertically */
+    padding: 10px; /* Add padding to prevent content overflow */
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
