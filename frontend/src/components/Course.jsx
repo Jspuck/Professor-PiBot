@@ -3,6 +3,7 @@ import axios from 'axios';
 import DrawingPad from './DrawingPad';
 import "https://unpkg.com/mathlive";
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
+import API_BASE_URL from '../apiConfig'; // Adjust path as needed
 
 const Course = ({ module, userId, sendToChatTutor}) => {
     const [submissionType, setSubmissionType] = useState('latex');
@@ -22,7 +23,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
         const fetchQuestions = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`http://127.0.0.1:5000/api/getmodule?module=${module}`);
+                const response = await axios.get(`${API_BASE_URL}/api/getmodule?module=${module}`);
                 
                 if (response.data && response.data.questions) {
                     setQuestions(response.data.questions);
