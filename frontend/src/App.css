@@ -76,3 +76,27 @@ h1 {
   width: 150px; /* Adjust size to fit your layout */
   height: auto;
 }
+
+@media (max-width: 768px) {
+  .App-header {
+    flex-direction: column; /* Stack items vertically */
+    height: auto; /* Adjust height */
+    padding: 20px; /* Add more padding for spacing */
+  }
+
+  .nav {
+    flex-wrap: wrap; /* Allow wrapping of nav buttons */
+    justify-content: center; /* Center align navigation */
+    gap: 10px; /* Reduce spacing between items */
+  }
+
+  .HeaderButton {
+    font-size: 14px; /* Reduce button font size */
+    padding: 8px 10px; /* Adjust padding */
+    width: auto; /* Prevent buttons from being too wide */
+  }
+
+  .logo {
+    width: 120px; /* Reduce logo size */
+  }
+}
