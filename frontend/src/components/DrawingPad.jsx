@@ -76,7 +76,11 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
     const previewDrawing = async () => {
         const image = canvasRef.current.toDataURL('image/png');
         try {
+<<<<<<< HEAD
             const response = await axios.post(${API_BASE_URL}/api/process-drawing, {
+=======
+            const response = await axios.post(`${API_BASE_URL}/api/process-drawing`, {
+>>>>>>> parent of 23d71360 (Update DrawingPad.jsx)
                 src: image,
                 formats: ['latex_styled'],
                 data_options: { include_asciimath: true },
@@ -131,7 +135,11 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
                             <span>Detected: {preview}</span>
                         </div>
                         <div className="px-4 py-2 border border-gray-300 rounded-lg bg-blue-100 text-blue-700">
+<<<<<<< HEAD
                             <MathJax>{$$${preview}$$}</MathJax>
+=======
+                            <MathJax>{`$$${preview}$$`}</MathJax>
+>>>>>>> parent of 23d71360 (Update DrawingPad.jsx)
                         </div>
                     </div>
                 )}
