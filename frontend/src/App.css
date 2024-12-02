@@ -96,3 +96,22 @@ h1 {
     height: 100%; /* Full height */
   }
 }
+
+/* Other styles above */
+
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 1.25rem; /* Reduce font size for titles */
+  }
+
+  .course-content {
+    font-size: 0.875rem; /* Smaller font for course text */
+    padding: 1rem; /* Adjust padding */
+  }
+
+  .course-buttons button {
+    padding: 0.5rem 1rem; /* Smaller buttons */
+    font-size: 0.875rem;
+  }
+}
+
