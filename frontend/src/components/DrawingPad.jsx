@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import { MathJax } from 'better-react-mathjax';
-import API_BASE_URL from '../apiConfig'; // Import API base URL
+import API_BASE_URL from '../apiConfig';
 
 const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
   const canvasRef = useRef(null);
@@ -17,8 +17,9 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
     const devicePixelRatio = window.devicePixelRatio || 1;
 
     const resizeCanvas = () => {
-      const canvasWidth = window.innerWidth * 0.8; // 80% of screen width
-      const canvasHeight = window.innerHeight * 0.3; // 30% of screen height
+      const parent = canvas.parentElement;
+      const canvasWidth = parent.offsetWidth;
+      const canvasHeight = parent.offsetHeight * 0.5;
 
       canvas.width = canvasWidth * devicePixelRatio;
       canvas.height = canvasHeight * devicePixelRatio;
@@ -32,8 +33,6 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
     };
 
     window.addEventListener('resize', resizeCanvas);
-
-    // Initial setup
     resizeCanvas();
 
     return () => window.removeEventListener('resize', resizeCanvas);
@@ -104,10 +103,10 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center justify-center w-full h-full p-4">
       <canvas
         ref={canvasRef}
-        className="border border-gray-700 bg-white touch-none w-full h-auto max-w-[90%] md:max-w-[80%] lg:max-w-[70%]"
+        className="border border-gray-700 bg-white w-full h-auto max-w-full"
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
