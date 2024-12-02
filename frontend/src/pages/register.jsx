@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import API_BASE_URL from '../apiConfig'; // Import API_BASE_URL
 
 function Register() {
     const [username, setUsername] = useState('');
@@ -19,7 +20,7 @@ function Register() {
         }
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/register', {
+            const response = await fetch(`${API_BASE_URL}/api/register`, { // Updated URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
