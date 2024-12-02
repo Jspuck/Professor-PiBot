@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
-import { MathJax, MathJaxContext } from 'better-react-mathjax';
+import { MathJax } from 'better-react-mathjax';
 import API_BASE_URL from '../apiConfig'; // Import API base URL
 
 const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
@@ -14,22 +14,32 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
         const context = canvas.getContext('2d');
         setCtx(context);
 
-        // Set up canvas for better touch experience
+        // Ensure canvas is properly scaled for high DPI screens
         const devicePixelRatio = window.devicePixelRatio || 1;
-        canvas.width = canvas.offsetWidth * devicePixelRatio;
-        canvas.height = canvas.offsetHeight * devicePixelRatio;
+        canvas.width = 800 * devicePixelRatio;
+        canvas.height = 200 * devicePixelRatio;
+        canvas.style.width = '800px';
+        canvas.style.height = '200px';
         context.scale(devicePixelRatio, devicePixelRatio);
+
+        // Set default drawing styles
         context.lineWidth = 2;
         context.lineCap = 'round';
         context.strokeStyle = 'black';
     }, []);
 
-    const getTouchPos = (e) => {
+    const getPosition = (e) => {
         const rect = canvasRef.current.getBoundingClientRect();
-        const touch = e.touches[0];
+        if (e.touches) {
+            const touch = e.touches[0];
+            return {
+                x: touch.clientX - rect.left,
+                y: touch.clientY - rect.top,
+            };
+        }
         return {
-            x: touch.clientX - rect.left,
-            y: touch.clientY - rect.top,
+            x: e.nativeEvent.offsetX,
+            y: e.nativeEvent.offsetY,
         };
     };
 
@@ -37,16 +47,16 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
         e.preventDefault();
         setDrawing(true);
 
-        const { x, y } = e.touches ? getTouchPos(e) : { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
+        const { x, y } = getPosition(e);
         ctx.beginPath();
         ctx.moveTo(x, y);
     };
 
     const draw = (e) => {
         if (!drawing) return;
-
         e.preventDefault();
-        const { x, y } = e.touches ? getTouchPos(e) : { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
+
+        const { x, y } = getPosition(e);
         ctx.lineTo(x, y);
         ctx.stroke();
     };
@@ -89,7 +99,7 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
             <canvas
                 ref={canvasRef}
                 width={800}
-                height={400}
+                height={200}
                 className="border border-gray-700 bg-white touch-none"
                 onMouseDown={startDrawing}
                 onMouseMove={draw}
