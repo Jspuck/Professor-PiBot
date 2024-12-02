@@ -16,7 +16,8 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__, static_folder='../frontend/dist')
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, origins=["https://professorpibot.netlify.app"])
+
 
 # Secret key for session management
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
