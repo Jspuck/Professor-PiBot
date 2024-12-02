@@ -1,3 +1,5 @@
+learn.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MathJaxContext } from 'better-react-mathjax';
@@ -17,7 +19,6 @@ function Learn() {
   // Add new state for chat messages
   const [chatMessages, setChatMessages] = useState([]);
 
-
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const selectedModule = queryParams.get('module');
@@ -28,7 +29,7 @@ function Learn() {
 
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/api/user`);
+        const res = await axios.get(${API_BASE_URL}/api/user);
         if (res.status === 200) {
           setUserId(res.data.user_id);
         } else {
@@ -53,7 +54,7 @@ function Learn() {
 
   return (
     <MathJaxContext>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-screen h-screen md:h-[85vh] p-5 text-white">
+      <div className="grid grid-cols-2 gap-5 w-screen h-[85vh] p-5 text-white">
         {/* Course Section */}
         <div className="bg-gray-900 p-5 rounded-lg flex flex-col items-center overflow-hidden">
           <div className="w-full overflow-y-auto h-full">
