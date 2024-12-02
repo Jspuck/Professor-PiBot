@@ -1,3 +1,4 @@
+course.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DrawingPad from './DrawingPad';
@@ -23,7 +24,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
         const fetchQuestions = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`${API_BASE_URL}/api/getmodule?module=${module}`);
+                const response = await axios.get(${API_BASE_URL}/api/getmodule?module=${module});
                 
                 if (response.data && response.data.questions) {
                     setQuestions(response.data.questions);
@@ -93,7 +94,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
     
         if (submissionType === 'photo' && image) {
             try {
-                const photoResponse = await axios.post(`${API_BASE_URL}/api/process-drawing`, {
+                const photoResponse = await axios.post(${API_BASE_URL}/api/process-drawing, {
                     src: image,
                     formats: ['latex'],
                     data_options: {}
@@ -107,7 +108,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
         }
     
         try {
-            const response = await axios.post(`${API_BASE_URL}/api/process`, {
+            const response = await axios.post(${API_BASE_URL}/api/process, {
                 input: processedInput,
                 correctAnswer: currentQuestion.answer,
                 submissionType: 'validation',
@@ -118,7 +119,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
             
             setResponseState(isCorrect 
                 ? "Correct!" 
-                : `Incorrect. The correct answer is: ${currentQuestion.answer}`
+                : Incorrect. The correct answer is: ${currentQuestion.answer}
             );
     
             if (isCorrect) {
@@ -187,7 +188,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
         const currentQuestion = questions[currentQuestionIndex];
         if (!currentQuestion) return;
         
-        const message = `I need help solving this question: ${currentQuestion.question}`;
+        const message = I need help solving this question: ${currentQuestion.question};
         sendToChatTutor(message, 'fullAnswer');
     };
 
@@ -203,7 +204,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
         ];
 
         const requestPhrase = hintRequests[Math.min(hintCount - 1, hintRequests.length - 1)];
-        const message = `${requestPhrase} ${currentQuestion.question}`;
+        const message = ${requestPhrase} ${currentQuestion.question};
         
         sendToChatTutor(message, 'hint');
         setHintCount(prev => Math.min(prev + 1, hintRequests.length));
@@ -220,7 +221,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
                     <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
                         <div
                             className="h-full bg-gradient-to-r from-teal-400 to-green-500 text-white text-xs font-medium flex items-center justify-center transition-all duration-500 ease-in-out"
-                            style={{ width: `${progress}%` }}
+                            style={{ width: ${progress}% }}
                         >
                             {Math.round(progress)}%
                         </div>
@@ -228,16 +229,16 @@ const Course = ({ module, userId, sendToChatTutor}) => {
                 </div>
 
                 <div>
-                    <MathJax key={`latex-${currentQuestionIndex}`}>
+                    <MathJax key={latex-${currentQuestionIndex}}>
                         <h2 className="text-2xl font-semibold mb-4 font-sans transition-transform duration-300 ease-in-out">
                             {questions[currentQuestionIndex]?.question || 'Loading...'}
                         </h2>
                     </MathJax>
-                    <MathJax key={`response-${responseState}`}>
+                    <MathJax key={response-${responseState}}>
                         <p
-                            className={`${
+                            className={${
                                 responseState.includes("Correct!") ? "text-green-500" : responseState.includes("Incorrect") ? "text-red-500" : "text-gray-600"
-                            } mb-4`}
+                            } mb-4}
                         >
                             {responseState}
                         </p>
@@ -273,7 +274,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
                                         name="submissionType"
                                         className="peer hidden"
                                     />
-                                    <span className={`tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[blueviolet] peer-checked:to-[violet] peer-checked:text-white text-gray-700 p-2 rounded-lg transition duration-150 ease-in-out capitalize`}>
+                                    <span className={tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[blueviolet] peer-checked:to-[violet] peer-checked:text-white text-gray-700 p-2 rounded-lg transition duration-150 ease-in-out capitalize}>
                                         {type}
                                     </span>
                                 </label>
@@ -283,7 +284,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
                         {submissionType === 'latex' && (
                             <div className="flex items-center justify-center w-full">
                                 <math-field
-                                    key={`latex-${currentQuestionIndex}`}
+                                    key={latex-${currentQuestionIndex}}
                                     value={input}
                                     onInput={(evt) => setInput(evt.target.value)}
                                     placeholder="Enter Answer Here"
@@ -309,7 +310,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
                                     {input && (
                                         <div className="text-gray-200 mt-2">
                                             <p>LaTeX Preview:</p>
-                                            <MathJax>{`$$${input}$$`}</MathJax>
+                                            <MathJax>{$$${input}$$}</MathJax>
                                         </div>
                                     )}
                                 </div>
@@ -351,7 +352,7 @@ const Course = ({ module, userId, sendToChatTutor}) => {
 
                         {submissionType === 'pen' && (
                             <DrawingPad
-                                key={`pen-${currentQuestionIndex}`}
+                                key={pen-${currentQuestionIndex}}
                                 setResponse={setResponseState}
                                 setLatexPreview={setInput}
                                 onInputChange={(drawingOutput) => {
@@ -382,16 +383,16 @@ const Course = ({ module, userId, sendToChatTutor}) => {
                     <button
                         onClick={prevQuestion}
                         disabled={currentQuestionIndex === 0}
-                        className={`relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 rounded-xl transition-transform duration-300 ${
+                        className={relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 rounded-xl transition-transform duration-300 ${
                             currentQuestionIndex === 0
                                 ? 'cursor-not-allowed opacity-50'
                                 : 'cursor-pointer hover:scale-105 active:scale-95'
-                        }`}
+                        }}
                     >
                         <span
-                            className={`absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] ${
+                            className={absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] ${
                                 currentQuestionIndex === 0 ? 'opacity-50' : 'opacity-0 group-hover:opacity-100'
-                            }`}
+                            }}
                         />
                         <span className="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
                             <div className="relative z-10 flex items-center space-x-2">
@@ -405,16 +406,16 @@ const Course = ({ module, userId, sendToChatTutor}) => {
                     <button
                         onClick={nextQuestion}
                         disabled={currentQuestionIndex === questions.length - 1}
-                        className={`relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 rounded-xl transition-transform duration-300 ${
+                        className={relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 rounded-xl transition-transform duration-300 ${
                             currentQuestionIndex === questions.length - 1
                                 ? 'cursor-not-allowed opacity-50'
                                 : 'cursor-pointer hover:scale-105 active:scale-95'
-                        }`}
+                        }}
                     >
                         <span
-                            className={`absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] ${
+                            className={absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] ${
                                 currentQuestionIndex === questions.length - 1 ? 'opacity-50' : 'opacity-0 group-hover:opacity-100'
-                            }`}
+                            }}
                         />
                         <span className="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
                             <div className="relative z-10 flex items-center space-x-2">
