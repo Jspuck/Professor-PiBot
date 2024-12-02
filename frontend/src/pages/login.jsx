@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import API_BASE_URL from '../apiConfig'; // Import API base URL
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/login', {
+            const response = await fetch(`${API_BASE_URL}/api/login`, { // Use API_BASE_URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
