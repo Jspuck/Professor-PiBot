@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import EditInfoForm from '../components/EditInfoForm';
+import API_BASE_URL from '../apiConfig'; // Import the API_BASE_URL
 
 function Dashboard() {
     const [userInfo, setUserInfo] = useState(null);
@@ -15,7 +16,7 @@ function Dashboard() {
         const fetchUserData = async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch('http://127.0.0.1:5000/api/user', {
+                const response = await fetch(`${API_BASE_URL}/api/user`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -49,7 +50,7 @@ function Dashboard() {
             const formData = new FormData();
             formData.append('profilePicture', file);
 
-            fetch('http://127.0.0.1:5000/api/user/upload-pfp', {
+            fetch(`${API_BASE_URL}/api/user/upload-pfp`, {
                 method: 'POST',
                 body: formData,
             })
