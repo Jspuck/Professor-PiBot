@@ -18,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -25,9 +26,12 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  flex-direction: column; /* Stack content vertically */
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 h1 {
@@ -46,9 +50,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -66,10 +72,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
 * {
   box-sizing: border-box;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   h1 {
     font-size: 2.4em; /* Scale down header size */
@@ -81,8 +89,7 @@ button:focus-visible {
   }
 
   body {
-    flex-direction: column; /* Stack content vertically */
-    padding: 10px; /* Add padding to prevent content overflow */
+    padding: 10px; /* Prevent content overflow */
   }
 }
 

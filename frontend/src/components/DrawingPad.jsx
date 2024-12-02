@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
-import { MathJax } from 'better-react-mathjax';
+import { MathJax} from 'better-react-mathjax';
 import API_BASE_URL from '../apiConfig';
 
 const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
@@ -40,18 +40,23 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
 
   const getPosition = (e) => {
     const rect = canvasRef.current.getBoundingClientRect();
+    const scaleX = canvasRef.current.width / rect.width; // Calculate horizontal scale factor
+    const scaleY = canvasRef.current.height / rect.height; // Calculate vertical scale factor
+  
     if (e.touches) {
       const touch = e.touches[0];
       return {
-        x: touch.clientX - rect.left,
-        y: touch.clientY - rect.top,
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY,
       };
     }
+  
     return {
-      x: e.nativeEvent.offsetX,
-      y: e.nativeEvent.offsetY,
+      x: (e.clientX - rect.left) * scaleX,
+      y: (e.clientY - rect.top) * scaleY,
     };
   };
+  
 
   const startDrawing = (e) => {
     e.preventDefault();
