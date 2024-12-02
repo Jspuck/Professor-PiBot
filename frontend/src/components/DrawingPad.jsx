@@ -5,31 +5,33 @@ import API_BASE_URL from '../apiConfig'; // Import API base URL
 
 const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
     const canvasRef = useRef(null);
+    const containerRef = useRef(null);
     const [ctx, setCtx] = useState(null);
     const [drawing, setDrawing] = useState(false);
     const [preview, setPreview] = useState(null);
 
     useEffect(() => {
-        const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
-        setCtx(context);
-
-        // Set canvas dimensions dynamically
         const updateCanvasSize = () => {
+            const containerWidth = containerRef.current?.offsetWidth || 800;
             const devicePixelRatio = window.devicePixelRatio || 1;
-            const width = Math.min(window.innerWidth - 40, 800); // Max width: 800px, adjust for smaller screens
+
+            const width = Math.min(containerWidth, 800); // Max width of 800px
             const height = 200;
 
+            const canvas = canvasRef.current;
+            const context = canvas.getContext('2d');
             canvas.width = width * devicePixelRatio;
             canvas.height = height * devicePixelRatio;
             canvas.style.width = `${width}px`;
             canvas.style.height = `${height}px`;
             context.scale(devicePixelRatio, devicePixelRatio);
 
-            // Set default drawing styles
+            // Set drawing styles
             context.lineWidth = 2;
             context.lineCap = 'round';
             context.strokeStyle = 'black';
+
+            setCtx(context);
         };
 
         updateCanvasSize();
@@ -107,7 +109,7 @@ const DrawingPad = ({ setResponse, setLatexPreview, onInputChange }) => {
     };
 
     return (
-        <div className="flex flex-col items-center gap-4">
+        <div ref={containerRef} className="w-full max-w-3xl mx-auto flex flex-col items-center gap-4">
             <canvas
                 ref={canvasRef}
                 className="border border-gray-700 bg-white touch-none"
