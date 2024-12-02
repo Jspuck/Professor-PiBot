@@ -6,7 +6,7 @@ Professor PiBot is a discrete mathematics tutor application with a Flask backend
 
 Before you begin, ensure you have met the following requirements:
 * You have installed Python 3.7+
-* You have installed Node.js and npm
+* You have installed Node.js and npm.
 * You have a Windows machine
 
 ## Installing Professor PiBot
