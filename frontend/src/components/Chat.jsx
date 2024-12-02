@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import icon from '../assets/icon.png';
+import API_BASE_URL from '../apiConfig'; // Adjust path as needed
 
 const Chat = ({ response, latexPreview, messages, setMessages }) => {
     const [userInput, setUserInput] = useState('');
@@ -62,7 +63,7 @@ const Chat = ({ response, latexPreview, messages, setMessages }) => {
         setLoading(true);
     
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/process', {
+            const response = await fetch(`${API_BASE_URL}/api/process`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
