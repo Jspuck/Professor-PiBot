@@ -11,7 +11,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installing Professor PiBot
 
-To install Professor PiBot, follow these steps:
+To install Professor PiBot, follow these steps: 
 
 Clone the repository:
 
